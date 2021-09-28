@@ -1,0 +1,36 @@
+{% extends "basefront.html.twig" %}
+{% block body %}
+    <br>
+    <h2 class="text-center"> Voici la liste des villes que j'ai visité</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Ville</th>
+                <th>Pays</th>
+                <th class="text-center">Note</th>
+                <th class="text-center">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for visite in visites %}
+                <tr>
+                    <td> <a href="#">{{ visite.ville }}</a> </td>
+                    <td>{{ visite.pays }}</td>
+                    {% if (visite.note>=10) %}
+                        <td class="text-center text-success">
+                            {{ visite.note }}/20
+                        </td>                        
+                    {% else %}
+                        <td class="text-center text-danger">
+                            {{ visite.note }}/20
+                        </td>                         
+                    {% endif %}
+
+                    <td class="text-center">{{ visite.datecreationstring }}</td>
+                </tr>
+            {% endfor %}   
+        </tbody
+    </table>
+
+
+{% endblock %}
