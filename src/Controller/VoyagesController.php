@@ -28,6 +28,22 @@ class VoyagesController extends AbstractController {
         $this->repository = $repository;
     }
 
+    /**
+     * @Route("/voyages/tri/{champ}/{ordre}", name="voyages.sort")
+     * @param type $champ
+     * @param type $ordre
+     * @return Response
+     */
+    public function sort($champ, $ordre): Response{
+        $visites = $this->repository->findAllOrderBy($champ, $ordre);
+        return $this->render("pages/voyages.html.twig", [
+            'visites' => $visites
+        ]);
+    }
+    
+    
+    
+    
     
     /**
      * @Route ("/voyages", name="voyages")
